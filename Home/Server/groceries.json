@@ -1,0 +1,22 @@
+[
+    {
+        "groceryUid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "groceryName": "Broccoli"
+    },
+    {
+        "groceryUid": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "groceryName": "Chicken"
+    },
+    {
+        "groceryUid": "ccccccccccccccccccccccccccc",
+        "groceryName": "Curry"
+    },
+    {
+        "groceryUid": "nmsffhjskdfdskufji",
+        "groceryName": "Cream of Chicken Soup"
+    },
+    {
+        "groceryUid": "fhjdkashfdjkashakjfhskdja",
+        "groceryName": "Bread Crumbs"
+    }
+]

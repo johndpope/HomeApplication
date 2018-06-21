@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Home.Server
+namespace Home.Server.Meals
 {
     [Route("api/[controller]")]
     public class MealController : Controller

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Grocery]
+(
+	[groceryUid] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [groceryName] VARCHAR(MAX) NOT NULL, 
+    [mealUid] UNIQUEIDENTIFIER NULL
+)

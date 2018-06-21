@@ -27,7 +27,6 @@
     <Folder Include="Client\app\components\meal\meal-list\" />
     <Folder Include="Client\app\components\budget\" />
     <Folder Include="Client\app\components\car\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

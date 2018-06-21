@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Car]
+(
+	[carUid] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	[make] VARCHAR(MAX) NOT NULL,
+	[model] VARCHAR(MAX) NOT NULL,
+	[year] INT NOT NULL, 
+    [licensePlate] VARCHAR(MAX) NOT NULL
+)

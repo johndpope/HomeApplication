@@ -13,14 +13,14 @@ import { MealListComponent } from './components/meal/meal-list/meal-list.compone
 import { MealDetailsComponent } from './components/meal/meal-details/meal-details.component';
 import { CarDetailsComponent } from './components/car/car-details/car-details.component';
 import { CarListComponent } from './components/car/car-list/car-list.component';
-import { BudgetComponent } from './components/budget/budget.component';
+import { BudgetListComponent } from './components/budget/budget-list/budget-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        BudgetComponent,
+        BudgetListComponent,
         CarDetailsComponent,
         CarListComponent,
         GroceryListComponent,
@@ -35,7 +35,7 @@ import { BudgetComponent } from './components/budget/budget.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'budget', component: BudgetComponent },
+            { path: 'budgets', component: BudgetListComponent },
             { path: 'cars', component: CarListComponent },
             { path: 'cars/:id', component: CarDetailsComponent },
             { path: 'groceries', component: GroceryListComponent },

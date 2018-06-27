@@ -11,7 +11,7 @@ export class GroceryDetailsComponent implements OnInit {
     pageTitle: string = "Grocery Details"
 
     grocery: Grocery = {
-        'groceryUid': 'fjdakslfjadkslfjdkls',
+        'groceryId': 1,
         'groceryName': 'CURRY SHITS'
     };
 
@@ -23,7 +23,7 @@ export class GroceryDetailsComponent implements OnInit {
         const id = +this._route.snapshot.paramMap.get('id');
         this.pageTitle += `:${id}`;
         this.grocery = {
-            'groceryUid': 'fjdakslfjadkslfjdkls',
+            'groceryId': 1,
             'groceryName': 'CURRY SHITS'
         }
     }

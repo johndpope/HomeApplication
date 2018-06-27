@@ -1,6 +1,5 @@
 export interface BudgetItem {
     itemId: number;
-    itemUid: string;
-    budgetUid: string;
+    budgetId: number;
     transactionDate: Date;
 }

@@ -6,7 +6,6 @@ namespace Home.Server.Budgets
     public class Budget 
     {
         public int budgetId { get; set; }
-        public Guid budgetUid { get; set; }
         public string budgetName { get; set; }
         public TransactionFrequency frequency { get; set; }
         public TransactionType type { get; set; }

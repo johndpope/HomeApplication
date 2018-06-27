@@ -25,7 +25,7 @@
                 <tbody>
                     <tr *ngFor='let grocery of filteredGroceries'>
                         <td>
-                            <a [routerLink]="['/groceries', grocery.groceryUid]">
+                            <a [routerLink]="['/groceries', grocery.groceryId]">
                                 {{ grocery.groceryName }}
                             </a>
                         </td>

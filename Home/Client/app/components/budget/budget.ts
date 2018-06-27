@@ -1,6 +1,5 @@
 export interface Budget {
     budgetId: number;
-    budgetUid: string;
     budgetName: string;
     frequency: TransactionFrequency;
     type: TransactionType;

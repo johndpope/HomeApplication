@@ -4,7 +4,7 @@ namespace Home.Server.Groceries
 {
     public class Grocery
     {
-        public Guid groceryUid { get; set; }
+        public int groceryId { get; set; }
         public string groceryName { get; set; }
     }
 }

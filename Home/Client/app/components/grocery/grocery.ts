@@ -1,5 +1,5 @@
 export interface Grocery
 {
-    groceryUid: string;
+    groceryId: number;
     groceryName: string;
 }

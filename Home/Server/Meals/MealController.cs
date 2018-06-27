@@ -14,7 +14,7 @@ namespace Home.Server.Meals
             {
                 new Meal 
                 { 
-                    mealUid = Guid.NewGuid(), 
+                    mealId = 1, 
                     mealName = "Chicken Devan"
                     // groceries = new List<Grocery> 
                     // {

@@ -14,10 +14,10 @@ namespace Home.Server.Groceries
         {
             return new List<Grocery> 
             {
-                new Grocery { groceryUid = Guid.NewGuid(), groceryName = "Chicken" },
-                new Grocery { groceryUid = Guid.NewGuid(), groceryName = "Broccoli" },
-                new Grocery { groceryUid = Guid.NewGuid(), groceryName = "Rice" },
-                new Grocery { groceryUid = Guid.NewGuid(), groceryName = "Curry" },
+                new Grocery { groceryId = 1, groceryName = "Chicken" },
+                new Grocery { groceryId = 2, groceryName = "Broccoli" },
+                new Grocery { groceryId = 3, groceryName = "Rice" },
+                new Grocery { groceryId = 4, groceryName = "Curry" },
             };
         }
     }

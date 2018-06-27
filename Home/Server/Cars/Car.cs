@@ -4,7 +4,7 @@ namespace Home.Server.Cars
 {
     public class Car
     {
-        public Guid carUid { get; set; }
+        public int carId { get; set; }
         public string make { get; set; }
         public string model { get; set; }
         public int year { get; set; }

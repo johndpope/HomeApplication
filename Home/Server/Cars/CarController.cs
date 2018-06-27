@@ -12,9 +12,9 @@ namespace Home.Server.Cars
         {
             return new List<Car>
             {
-                new Car { carUid = Guid.NewGuid(), make = "Ford", model = "Mustang", licensePlate = "ANTT-3S9" },
-                new Car { carUid = Guid.NewGuid(), make = "Chevrolet", model = "Uplander", licensePlate = "ABYK-614" },
-                new Car { carUid = Guid.NewGuid(), make = "Toyota", model = "Matrix", licensePlate = "CCCC-CCC" },
+                new Car { carId = 1, make = "Ford", model = "Mustang", licensePlate = "ANTT-3S9" },
+                new Car { carId = 2, make = "Chevrolet", model = "Uplander", licensePlate = "ABYK-614" },
+                new Car { carId = 3, make = "Toyota", model = "Matrix", licensePlate = "CCCC-CCC" },
             };
         }
     }

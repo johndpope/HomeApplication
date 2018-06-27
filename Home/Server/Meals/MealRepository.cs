@@ -19,9 +19,6 @@ namespace Home.Server.Meals
         {
             if (meal == null)
                 throw new ArgumentNullException(nameof(meal), $"Cannot save a null {nameof(Meal)}.");
-            
-            if (meal.mealUid == Guid.Empty)
-                throw new ArgumentException("Guid.Empty is not a valid identifier.", nameof(meal));
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -32,7 +29,7 @@ namespace Home.Server.Meals
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "SaveMeal";
 
-                    command.Parameters.AddWithValue("@uid", meal.mealUid);
+                    command.Parameters.AddWithValue("@id", meal.mealId);
                     command.Parameters.AddWithValue("@name", meal.mealName);
                     command.ExecuteScalar();
                 }

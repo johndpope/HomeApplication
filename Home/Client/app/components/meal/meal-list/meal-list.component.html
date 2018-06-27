@@ -1,6 +1,6 @@
 <div class='panel panel-primary'>
     <div class='panel-heading'>
-        {{pageTitle}}
+        {{ pageTitle }}
     </div>
     <div class='panel-body'>
         <div class='row'>
@@ -25,7 +25,7 @@
                 <tbody>
                     <tr *ngFor='let meal of filteredMeals'>
                         <td>
-                            <a [routerLink]="['/meals', meal.mealUid]">
+                            <a [routerLink]="['/meals', meal.mealId]">
                                 {{ meal.mealName }}
                             </a>
                         </td>

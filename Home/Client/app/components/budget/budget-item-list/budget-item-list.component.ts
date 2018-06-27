@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BudgetItem } from '../budget-item';
 import { BudgetService } from '../budget.service';
 
@@ -8,6 +8,7 @@ import { BudgetService } from '../budget.service';
 })
 
 export class BudgetItemListComponent implements OnInit {
+    @Input('budgetUid') budgetUid: string;
     pageTitle: string = 'what the fuck is going on ';
     errorMessage: string;
 
@@ -16,7 +17,7 @@ export class BudgetItemListComponent implements OnInit {
     constructor(private _budgetService: BudgetService) { }
 
     ngOnInit() {
-        this._budgetService.getBudgetItems()
+        this._budgetService.getBudgetItems(this.budgetUid)
             .subscribe(budgetItems => {
                 this.budgetItems = budgetItems;
             },

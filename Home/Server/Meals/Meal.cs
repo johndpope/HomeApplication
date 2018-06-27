@@ -6,7 +6,7 @@ namespace Home.Server.Meals
 {
     public class Meal
     {
-        public Guid mealUid { get; set; }
+        public int mealId { get; set; }
         public string mealName { get; set; }
         public ICollection<Grocery> groceries { get; set; }
     }

@@ -1,5 +1,5 @@
 export interface Meal
 {
-    mealUid: string;
+    mealId: number;
     mealName: string;
 }

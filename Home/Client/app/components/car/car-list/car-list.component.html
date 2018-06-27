@@ -28,7 +28,7 @@
                 <tbody>
                     <tr *ngFor='let car of filteredCars'>
                         <td>
-                            <a [routerLink]="['/cars', car.carUid]">
+                            <a [routerLink]="['/cars', car.carId]">
                                 {{ car.license }}
                             </a>
                         </td>

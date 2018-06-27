@@ -3,17 +3,6 @@
         {{pageTitle}}
     </div>
     <div class='panel-body'>
-        <div class='row'>
-            <div class='col-md-2'>Filter by:</div>
-            <div class='col-md-4'>
-                <input type='text' [(ngModel)]='listFilter' />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-md-6'>
-                <h3>Filtered by: {{listFilter}} </h3>
-            </div>
-        </div>
         <div class='table-responsive'>
             <table class='table'
                     *ngIf='budgets && budgets.length'>
@@ -31,8 +20,8 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor='let budget of filteredBudgets'>
+                <tbody *ngFor='let budget of budgets'>
+                    <tr>
                         <td>
                             <a [routerLink]="['/budgets', budget.budgetName]">
                                 {{ budget.budgetName }}
@@ -46,6 +35,11 @@
                         </td>
                         <td>
                             {{ budget.amount }}
+                        </td>
+                        <td>
+                            <button class='btnAdditional'>
+                                <span class='glyphicon glyphicon-plus'></span>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

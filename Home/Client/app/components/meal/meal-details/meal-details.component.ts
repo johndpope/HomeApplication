@@ -20,7 +20,7 @@ export class MealDetailsComponent implements OnInit {
         const id = +this._route.snapshot.paramMap.get('id');
         this.pageTitle += `:${id}`;
         this.meal = {
-            'mealUid': 'jfdskal hgahfd saklfgjs',
+            'mealId': 1,
             'mealName': 'Chicken Devan'
         };
     }

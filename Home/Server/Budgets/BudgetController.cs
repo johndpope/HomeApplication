@@ -9,13 +9,11 @@ namespace Home.Server.Budgets
     {
         public IEnumerable<Budget> Get()
         {
-            Guid budget1Uid = Guid.NewGuid();
             return new List<Budget>
             {
                 new Budget 
                 {
                     budgetId = 1,
-                    budgetUid = budget1Uid,
                     budgetName = "Cell Phone Bill",
                     frequency = TransactionFrequency.weekly,
                     type = TransactionType.credit,
@@ -27,15 +25,13 @@ namespace Home.Server.Budgets
                         new BudgetItem 
                         {
                             itemId = 1,
-                            itemUid = Guid.NewGuid(),
-                            budgetUid = budget1Uid,
+                            budgetId = 1,
                             transactionDate = DateTime.Now
                         },
                         new BudgetItem 
                         {
                             itemId = 2,
-                            itemUid = Guid.NewGuid(),
-                            budgetUid = budget1Uid,
+                            budgetId = 1,
                             transactionDate = DateTime.Now
                         }
                     }

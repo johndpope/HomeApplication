@@ -18,8 +18,9 @@ export class BudgetService {
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-
-    getBudgetItems(): Observable<BudgetItem[]> {
+    
+    // Still need to figure out how to pass things to an api call
+    getBudgetItems(budgetUid: string): Observable<BudgetItem[]> {
         return this._http.get<BudgetItem[]>(this._budgetUrl)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);

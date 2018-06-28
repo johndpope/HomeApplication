@@ -3,47 +3,27 @@
         {{pageTitle}}
     </div>
     <div class='panel-body'>
-        <div class='table-responsive'>
-            <table class='table'
-                    *ngIf='budgets && budgets.length'>
-                <thead>
-                    <tr>
-                        <th>Budget Item Name</th>
-                        <th>
-                            Frequency
-                        </th>
-                        <th>
-                            Type
-                        </th>
-                        <th>
-                            Amount
-                        </th>
-                    </tr>
-                </thead>
-                <tbody *ngFor='let budget of budgets'>
-                    <tr>
-                        <td>
-                            <a [routerLink]="['/budgets', budget.budgetName]">
-                                {{ budget.budgetName }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ budget.frequency }}
-                        </td>
-                        <td>
-                            {{ budget.type }}
-                        </td>
-                        <td>
-                            {{ budget.amount }}
-                        </td>
-                        <td>
-                            <button class='btnAdditional'>
-                                <span class='glyphicon glyphicon-plus'></span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div >  <!-- *ngIf='budgets && budgets.length' -->
+            <div class="row">
+                <div class="col-md-8">Name</div>
+                <div class="col-md-8">Frequency</div>
+                <div class="col-md-8">Type</div>
+                <div class="col-md-8">Amount</div>
+                <div class="col-md-8">Additional Info</div>
+            </div>
+            <div class="row" *ngFor='let budget of budget'>
+                    <a [routerLink]="['/budgets', budget.budgetName]">
+                        {{ budget.budgetName }}
+                    </a>
+                <div class="col-md-8">{{ budget.frequency }}</div>
+                <div class="col-md-8">{{ budget.type }}</div>
+                <div class="col-md-8">{{ budget.amount }}</div>
+                <div class="col-md-8">
+                    <button class='btnAdditional'>
+                        <span class='glyphicon glyphicon-plus'></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

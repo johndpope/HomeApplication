@@ -14,6 +14,7 @@ import { MealDetailsComponent } from './components/meal/meal-details/meal-detail
 import { CarDetailsComponent } from './components/car/car-details/car-details.component';
 import { CarListComponent } from './components/car/car-list/car-list.component';
 import { BudgetListComponent } from './components/budget/budget-list/budget-list.component';
+import { BudgetDetailsComponent } from './components/budget/budget-details/budget-details.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { BudgetListComponent } from './components/budget/budget-list/budget-list
         NavMenuComponent,
         HomeComponent,
         BudgetListComponent,
+        BudgetDetailsComponent,
         CarDetailsComponent,
         CarListComponent,
         GroceryListComponent,
@@ -36,6 +38,7 @@ import { BudgetListComponent } from './components/budget/budget-list/budget-list
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'budgets', component: BudgetListComponent },
+            { path: 'budgets/:id', component: BudgetDetailsComponent },
             { path: 'cars', component: CarListComponent },
             { path: 'cars/:id', component: CarDetailsComponent },
             { path: 'groceries', component: GroceryListComponent },

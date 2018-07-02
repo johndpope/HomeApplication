@@ -7,6 +7,6 @@ namespace Home.Server.Meals
 {
     public interface IMealRepository
     {
-        void Save(Meal meal);
+        Task Save(Meal meal);
     }
 }

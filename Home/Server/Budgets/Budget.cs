@@ -13,5 +13,6 @@ namespace Home.Server.Budgets
         public DateTime updatedDate { get; set; }
         public double amount { get; set; }
         public ICollection<BudgetItem> items { get; set; }
+        public bool enabled { get; set; }
     }
 }

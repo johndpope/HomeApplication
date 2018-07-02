@@ -9,5 +9,6 @@ namespace Home.Server.Cars
         public string model { get; set; }
         public int year { get; set; }
         public string licensePlate { get; set; }
+        public bool enabled { get; set; }
     }
 }

@@ -6,5 +6,6 @@ namespace Home.Server.Groceries
     {
         public int groceryId { get; set; }
         public string groceryName { get; set; }
+        public bool enabled { get; set; }
     }
 }

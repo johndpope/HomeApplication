@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Home.Server.Meals
 {
@@ -15,7 +17,38 @@ namespace Home.Server.Meals
         ///
         ///</summary>
         ///<param name="meal"> The meal object being saved to the database</param>
-        public void Save(Meal meal)
+
+        public async Task<List<Meal>> Get(int? id = null)
+        {
+            List<Meal> meals = new List<Meal>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (id != null)
+                    {
+                         command.CommandText = "GetMeal";
+                         command.Parameters.AddWithValue("@id", id);
+                    }
+                    else
+                        command.CommandText = "GetMeals";
+                       
+                    var result = await command.ExecuteReaderAsync();
+                    
+                    var meal = new Meal();
+                    meal.mealId = result.GetInt32(0);
+                    meal.mealName = result.GetString(1);
+                    meal.enabled = result.GetBoolean(3);
+                    meals.Add(meal);
+                }
+            }
+            return meals;
+        }
+
+        public async Task Save(Meal meal)
         {
             if (meal == null)
                 throw new ArgumentNullException(nameof(meal), $"Cannot save a null {nameof(Meal)}.");
@@ -31,7 +64,8 @@ namespace Home.Server.Meals
 
                     command.Parameters.AddWithValue("@id", meal.mealId);
                     command.Parameters.AddWithValue("@name", meal.mealName);
-                    command.ExecuteScalar();
+                    command.Parameters.AddWithValue("@enabled", meal.enabled);
+                    await command.ExecuteScalarAsync();
                 }
             }
         }

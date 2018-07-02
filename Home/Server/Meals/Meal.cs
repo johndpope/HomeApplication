@@ -8,6 +8,7 @@ namespace Home.Server.Meals
     {
         public int mealId { get; set; }
         public string mealName { get; set; }
+        public bool enabled { get; set; }
         public ICollection<Grocery> groceries { get; set; }
     }
 }

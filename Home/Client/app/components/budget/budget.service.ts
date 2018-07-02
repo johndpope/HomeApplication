@@ -26,7 +26,14 @@ export class BudgetService {
             .catch(this.handleError);
     }
 
-    private handleError(err: HttpErrorResponse) {
+    getBudgetItems(budgetUid: string): Observable<BudgetItem[]> {
+        return this._http.get<BudgetItem[]>(this._budgetUrl)
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    private handleError(err: HttpErrorResponse)
+    {
         console.log(err.message);
         return Observable.throw(err.message);
     }

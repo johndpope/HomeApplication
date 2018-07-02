@@ -21,11 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Client\app\components\budget\budget-item-details\" />
+    <Folder Include="Client\app\components\budget\budget-details\" />
     <Folder Include="Client\app\components\grocery\grocery-details\" />
     <Folder Include="Client\app\components\grocery\grocery-list\" />
     <Folder Include="Client\app\components\meal\meal-details\" />
     <Folder Include="Client\app\components\meal\meal-list\" />
-    <Folder Include="Client\app\components\budget\" />
     <Folder Include="Client\app\components\car\" />
   </ItemGroup>
 

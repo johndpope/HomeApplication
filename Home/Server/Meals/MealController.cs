@@ -35,37 +35,37 @@ namespace Home.Server.Meals
             };
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Meal meal)
-        {
-            var result = await Save(meal);
-            if (result == null)
-                return new NoContentResult();
-            else 
-                return BadRequest();
-        }
+        // [HttpPost]
+        // public async Task<IActionResult> Create(Meal meal)
+        // {
+        //     var result = await Save(meal);
+        //     if (result == null)
+        //         return new NoContentResult();
+        //     else 
+        //         return BadRequest();
+        // }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(Meal meal)
-        {
-            var result = await Save(meal);
-            if (result == null)
-                return new NoContentResult();
-            else
-                return BadRequest();
-        }
+        // [HttpPut]
+        // public async Task<IActionResult> Update(Meal meal)
+        // {
+        //     var result = await Save(meal);
+        //     if (result == null)
+        //         return new NoContentResult();
+        //     else
+        //         return BadRequest();
+        // }
 
-        private async Task<string> Save(Meal meal)
-        {
-            try
-            {
-                await _database.Save(meal);
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-            return null;
-        }
+        // private async Task<string> Save(Meal meal)
+        // {
+        //     try
+        //     {
+        //         await _database.Save(meal);
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return ex.Message;
+        //     }
+        //     return null;
+        // }
     }
 }

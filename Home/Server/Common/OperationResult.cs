@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Home.Server.Meals
+namespace Home.Server.Common
 {
-    public interface IMealRepository
+    public class OperationResult
     {
-        //Task Save(Meal meal);
+        public Exception Error { get; set; }
     }
 }

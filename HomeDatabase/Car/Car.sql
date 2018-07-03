@@ -4,5 +4,6 @@
 	[make] VARCHAR(MAX) NOT NULL,
 	[model] VARCHAR(MAX) NOT NULL,
 	[year] INT NOT NULL, 
-    [licensePlate] VARCHAR(MAX) NOT NULL
+    [licensePlate] VARCHAR(MAX) NOT NULL, 
+    [enabled] BIT NOT NULL DEFAULT 1
 )

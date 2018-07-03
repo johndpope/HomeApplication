@@ -67,6 +67,10 @@
     <Build Include="Food\Meal.sql" />
     <Build Include="Car\MaintenanceType.sql" />
     <Build Include="Car\Maintenance.sql" />
+    <Build Include="Car\GetCars.sql" />
+    <Build Include="Car\GetMaintenanceForCar.sql" />
+    <Build Include="Car\SaveCar.sql" />
+    <Build Include="Car\GetCar.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HomeDatabase.refactorlog" />

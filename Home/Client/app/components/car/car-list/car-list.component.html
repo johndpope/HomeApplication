@@ -29,7 +29,7 @@
                     <tr *ngFor='let car of filteredCars'>
                         <td>
                             <a [routerLink]="['/cars', car.carId]">
-                                {{ car.license }}
+                                {{ car.licensePlate }}
                             </a>
                         </td>
                         <td>{{ car.make }}</td>

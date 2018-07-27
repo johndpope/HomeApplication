@@ -125,5 +125,48 @@ namespace Home.Server.Cars
             }
             return new OperationResult { Error = error };
         }
+
+        public async Task<CollectionResult<Maintenance>> GetMaintenance(int id)
+        {
+            List<Maintenance> results = new List<Maintenance>();
+            Exception error = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandText = "GetMaintenanceForCar";
+
+                        command.Parameters.AddWithValue("@carId", id);
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while(reader.Read())
+                            {
+                                results.Add(new Maintenance
+                                {
+                                    maintenanceId = reader.GetInt32(0),
+                                    carId = reader.GetInt32(1),
+                                    typeId = reader.GetInt32(2),
+                                    date = reader.GetDateTime(3),
+                                    kilometers = reader.GetInt32(4)
+                                });
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+            }
+
+            return new CollectionResult<Maintenance> { Error = error, Results = results };
+        }
     }
 }

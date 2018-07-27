@@ -8,5 +8,6 @@ namespace Home.Server.Cars
         Task<CollectionResult<Car>> GetAll();
         Task<DataResult<Car>> Get(int id);
         Task<OperationResult> Save(Car Car);
+        Task<CollectionResult<Maintenance>> GetMaintenance(int id);
     }
 }

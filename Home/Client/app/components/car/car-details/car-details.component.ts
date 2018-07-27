@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 import { Car } from '../car';
 import { CarService } from '../car.service';
+import { Maintenance } from '../maintenance';
 
 @Component({
     selector: 'car-details',
@@ -10,13 +12,16 @@ import { CarService } from '../car.service';
 })
 
 export class CarDetailsComponent implements OnInit {
-    pageTitle: string = 'Car';
+    pageTitle: string;
     errorMessage: string;
     make: string;
     model: string;
     year: number;
     licensePlate: string;
     car: Car;
+    carString: string;
+    maintenances: Maintenance[] = [];
+    filteredMaintenance: Maintenance[];
 
     constructor(private _route: ActivatedRoute,
                 private _router: Router,
@@ -25,14 +30,15 @@ export class CarDetailsComponent implements OnInit {
     ngOnInit() {
         const id = +this._route.snapshot.paramMap.get('id');
         this.pageTitle += `:${id}`;
+        
         this._carService.getCar(id)
-            .subscribe(car => {
+            .subscribe((car: Car) => {
                 this.car = car;
-                this.make = this.car.make;
-                this.model = this.car.model;
-                this.year = this.car.year;
-                this.licensePlate = this.car.licensePlate;
-            },
-            error => this.errorMessage = <any>error);
+                this.carString = this.car.make + ' ' + this.car.model;
+                this.pageTitle = this.carString + ' Maintenance';
+            });
+
+        this._carService.getCarMaintenance(id)
+            .subscribe((maintenance: Maintenance[]) => this.maintenances = maintenance);
     }
 }

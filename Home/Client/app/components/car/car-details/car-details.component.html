@@ -1,16 +1,28 @@
-<h1>{{ pageTitle }}</h1>
-<label>Make: </label>
-<input type='text' [(ngModel)]='make'>
-<br/>
-
-<label>Model: </label>
-<input type='text' [(ngModel)]='model'>
-<br/>
-
-<label>Year: </label>
-<input type='number' [(ngModel)]='year'>
-<br/>
-
-<label>License Plate: </label>
-<input type='text' [(ngModel)]='licensePlate'>
-<br/>
+<div class='panel panel-primary'>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <h3>{{ pageTitle }} </h3>
+            </div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table'
+                    *ngIf='maintenances && maintenances.length'>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Kilometers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let maintenance of maintenances'>
+                        <td>{{ maintenance.typeId }}</td>
+                        <td>{{ maintenance.date }} </td>
+                        <td>{{ maintenance.kilometers }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

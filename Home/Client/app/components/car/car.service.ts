@@ -1,37 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
 import { Car } from './car';
-import { RequestOptions } from '../../../../node_modules/@angular/http';
+import { Maintenance } from './maintenance';
 
 @Injectable()
 export class CarService {
     private _carUrl = './api/car';
+    private _maintenanceUrl = './api/maintenance';
 
     constructor(private _http: HttpClient) { }
 
     getCars(): Observable<Car[]> {
         return this._http.get<Car[]>(this._carUrl)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+            .do(data => console.log('All: ' + JSON.stringify(data)));
     }
 
     getCar(id: number): Observable<Car> {
-        let headers = new HttpHeaders({ 'Content-Type': 'applciation/json' });
-        let params = new HttpParams()
-            .set('id', id.toString());
-
-        let requestOptions = { headers: headers, params: params };
-        return this._http.get<Car>(this._carUrl, requestOptions)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+        return this._http.get<Car>(this._carUrl + '/' + id.toString())
+            .do(data => console.log('All: ' + JSON.stringify(data)));
     }
 
-    private handleError(err: HttpErrorResponse) {
-        console.log(err.message);
-        return Observable.throw(err.message);
+    getCarMaintenance(id: number): Observable<Maintenance[]> {
+        return this._http.get<Maintenance[]>(this._maintenanceUrl + '/' + id.toString())
+            .do(data => console.log('Maintenance: ' + JSON.stringify(data)));
     }
 }

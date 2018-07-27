@@ -20,17 +20,22 @@ export class CarListComponent implements OnInit {
     }
     set listFilter(value: string) {
         this._listFilter = value;
-        this.filteredCars = [];
+        this.filteredCars = this.listFilter ? this.performFilter(this.listFilter) : this.cars;
     }
 
     constructor(private _carService: CarService) { }
 
     ngOnInit() {
         this._carService.getCars()
-            .subscribe(cars => {
+            .subscribe((cars: Car[]) => {
                 this.cars = cars;
                 this.filteredCars = cars;
-            },
-            error => this.errorMessage = <any>error);
+            });
+    }
+
+    performFilter(filterBy: string) 
+    {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.cars.filter((car: Car) => car.make.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 }

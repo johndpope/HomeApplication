@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using Home.Server.Common;
 
@@ -9,7 +10,10 @@ namespace Home.Server.Cars
 {
     public class CarRepository :  ICarRepository
     {
+        private bool _typesLoaded = false;
+        private List<MaintenanceType> _types = null;
         private readonly string _connectionString = $"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HomeDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+        
         public async Task<DataResult<Car>> Get(int id)
         {
             Car result = null;
@@ -131,6 +135,15 @@ namespace Home.Server.Cars
             List<Maintenance> results = new List<Maintenance>();
             Exception error = null;
 
+            if (!_typesLoaded)
+            {
+                var result = await GetMaintenanceTypes();
+                if (result.Error == null)
+                    _types = result.Results;
+                else
+                    _types = new List<MaintenanceType>();
+            }
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -154,7 +167,8 @@ namespace Home.Server.Cars
                                     carId = reader.GetInt32(1),
                                     typeId = reader.GetInt32(2),
                                     date = reader.GetDateTime(3),
-                                    kilometers = reader.GetInt32(4)
+                                    kilometers = reader.GetInt32(4),
+                                    type = _types.FirstOrDefault(x => x.typeId == reader.GetInt32(2))
                                 });
                             };
                         }
@@ -167,6 +181,44 @@ namespace Home.Server.Cars
             }
 
             return new CollectionResult<Maintenance> { Error = error, Results = results };
+        }
+
+        public async Task<CollectionResult<MaintenanceType>> GetMaintenanceTypes()
+        {
+            List<MaintenanceType> results = new List<MaintenanceType>();
+            Exception error = null;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandText = "GetMaintenanceTypes";
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (reader.Read())
+                            {
+                                results.Add(new MaintenanceType()
+                                {
+                                    typeId = reader.GetInt32(0),
+                                    name = reader.GetString(1),
+                                    reminder = reader.GetBoolean(2),
+                                    timeSpan = reader.GetInt32(3),
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex;   
+            }
+            return new CollectionResult<MaintenanceType> { Error = error, Results = results };
         }
     }
 }

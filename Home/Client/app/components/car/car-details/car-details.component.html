@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor='let maintenance of maintenances'>
-                        <td>{{ maintenance.typeId }}</td>
+                        <td>{{ maintenance.type.name }}</td>
                         <td>{{ maintenance.date }} </td>
                         <td>{{ maintenance.kilometers }}</td>
                     </tr>

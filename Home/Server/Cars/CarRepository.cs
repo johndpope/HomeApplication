@@ -12,7 +12,9 @@ namespace Home.Server.Cars
     {
         private bool _typesLoaded = false;
         private List<MaintenanceType> _types = null;
-        private readonly string _connectionString = $"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HomeDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+        //private readonly string _connectionString = $"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HomeDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+        private readonly string _connectionString = $"Data Source=DESKTOP-TGBOQ7F;Initial Catalog=HomeDatabase;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+        
         
         public async Task<DataResult<Car>> Get(int id)
         {
